@@ -4,7 +4,7 @@ export const siteMetadata = {
   headerTitle: "Ahsan Ali",
   description: "Frontend and Reactjs developer",
   language: "en-us",
-  theme: "light",
+  theme: "dark",
   siteName: "ahsanali",
   siteUrl: "https://ahsanali-mu.vercel.app/",
   siteRepo: "https://github.com/ahsanalijs",
