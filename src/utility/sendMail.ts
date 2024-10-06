@@ -1,4 +1,4 @@
-import { createTransport } from "nodemailer";
+import nodemailer, { createTransport } from "nodemailer";
 
 export const sendMail = async function (
   name: string,
@@ -6,7 +6,7 @@ export const sendMail = async function (
   subject: string,
   message: string,
 ): Promise<{ status: number; message: string }> {
-  const user = process.env.NODEMAILER_USER;
+  const user = process.env.NODEMAILER_EMAIL;
   const pass = process.env.NODEMAILER_PASS;
 
   if (!user && !pass) {
@@ -18,14 +18,24 @@ export const sendMail = async function (
   const transporter = createTransport({
     service: "gmail",
     auth: {
-      user,
-      pass,
+      user:process.env.NODEMAILER_EMAIL,
+      pass:process.env.NODEMAILER_PASS,
     },
   });
+  // App Password oqgm qfiy edum mfwv
+
+  // const transporter =createTransport({
+  //   host: 'smtp.ethereal.email',
+  //   port: 587,
+  //   auth: {
+  //     user: 'cecilia.macejkovic19@ethereal.email',
+  //     pass: 'JJDFswJP6WJ9PqPrCU'
+  //   }
+  // });
 
   const mailOptions = {
-    from: process.env.NODEMAILER_USER,
-    to: process.env.NODEMAILER_USER,
+    from: process.env.NODEMAILER_EMAIL,
+    to: email,
     subject: "Portfolio: [" + subject + " ]",
     text: `${name}: <${email}>\n${message}`,
   };
