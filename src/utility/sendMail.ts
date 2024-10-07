@@ -22,8 +22,8 @@ export const sendMail = async function (
   });
 
   const mailOptions = {
-    from: process.env.NODEMAILER_EMAIL,
-    to: email,
+    from: email,
+    to: process.env.NODEMAILER_EMAIL,
     subject: "Portfolio: [" + subject + " ]",
     text: `${name}: <${email}>\n${message}`,
   };

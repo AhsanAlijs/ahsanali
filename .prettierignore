@@ -4,3 +4,9 @@ node_modules
 .next
 .vscode
 public
+
+{
+  "singleQuote": true,
+  "trailingComma": "all",
+  "semi": true
+}
