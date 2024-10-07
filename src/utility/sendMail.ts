@@ -1,4 +1,4 @@
-import nodemailer, { createTransport } from "nodemailer";
+import { createTransport } from "nodemailer";
 
 export const sendMail = async function (
   name: string,
@@ -8,30 +8,18 @@ export const sendMail = async function (
 ): Promise<{ status: number; message: string }> {
   const user = process.env.NODEMAILER_EMAIL;
   const pass = process.env.NODEMAILER_PASS;
-
   if (!user && !pass) {
     return new Promise((resolve) =>
       resolve({ status: 500, message: "Internal server error" }),
     );
   }
-
   const transporter = createTransport({
     service: "gmail",
     auth: {
-      user:process.env.NODEMAILER_EMAIL,
-      pass:process.env.NODEMAILER_PASS,
+      user: process.env.NODEMAILER_EMAIL,
+      pass: process.env.NODEMAILER_PASS,
     },
   });
-  // App Password oqgm qfiy edum mfwv
-
-  // const transporter =createTransport({
-  //   host: 'smtp.ethereal.email',
-  //   port: 587,
-  //   auth: {
-  //     user: 'cecilia.macejkovic19@ethereal.email',
-  //     pass: 'JJDFswJP6WJ9PqPrCU'
-  //   }
-  // });
 
   const mailOptions = {
     from: process.env.NODEMAILER_EMAIL,
